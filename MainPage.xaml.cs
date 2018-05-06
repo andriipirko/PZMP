@@ -18,6 +18,32 @@ namespace AdminAccountingApp
 
         private void AddElements()
         {
+            ToolbarItem tb = new ToolbarItem
+            {
+                Text = "Список клієнтів",
+                Order = ToolbarItemOrder.Secondary,
+                Priority = 0
+            };
+
+            ToolbarItem tb1 = new ToolbarItem
+            {
+                Text = "Пункт меню",
+                Order = ToolbarItemOrder.Secondary,
+                Priority = 0
+            };
+
+            ToolbarItem tb2 = new ToolbarItem
+            {
+                Text = "Пункт меню",
+                Order = ToolbarItemOrder.Secondary,
+                Priority = 0
+            };
+
+            ToolbarItems.Add(tb);
+            ToolbarItems.Add(tb1);
+            ToolbarItems.Add(tb2);
+
+
             StackLayout stackLayout = new StackLayout();
 
             Button buttonClients = new Button

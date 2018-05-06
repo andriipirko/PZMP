@@ -13,7 +13,7 @@ namespace AdminAccountingApp
 		{
 			InitializeComponent();
 
-            MainPage = new NavigationPage(new AdminAccountingApp.MainPage());
+            MainPage = new NavigationPage(new AdminAccountingApp.AuthorizationPage());
 		}
 
 		protected override void OnStart ()

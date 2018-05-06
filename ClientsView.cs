@@ -80,25 +80,31 @@ namespace AdminAccountingApp
                 }
             };
 
-            DisplayMetrics displayMetrics = new DisplayMetrics();
+            //DisplayMetrics displayMetrics = new DisplayMetrics();
 
             Button createNewCustomerButtom = new Button();
             createNewCustomerButtom.Text = "+";
             createNewCustomerButtom.TextColor = Color.White;
-            createNewCustomerButtom.BackgroundColor = Color.Accent;
-            createNewCustomerButtom.FontSize = 20;
-            createNewCustomerButtom.WidthRequest = 30;
-            createNewCustomerButtom.HeightRequest = 30;
-            createNewCustomerButtom.BorderRadius = (int)createNewCustomerButtom.WidthRequest; 
+            createNewCustomerButtom.BackgroundColor = Color.Aqua;
+            createNewCustomerButtom.FontSize = 40;
+            createNewCustomerButtom.BorderRadius = (int)createNewCustomerButtom.WidthRequest * 2;
+            createNewCustomerButtom.Clicked += async (sender, e) => await CreateNewServerAsync();
 
-            AbsoluteLayout l = new AbsoluteLayout();
-            l.Children.Add(table);
-            l.Children.Add(createNewCustomerButtom, new Point(displayMetrics.WidthPixels - 35, displayMetrics.HeightPixels - 35));
+
+            StackLayout sl = new StackLayout();
+            sl.Children.Add(table);
+            sl.Children.Add(createNewCustomerButtom);
 
             ScrollView scroll = new ScrollView();
-            scroll.Content = l;
+            scroll.Content = sl;
 
             Content = scroll;
+        }
+
+        private async Task CreateNewServerAsync()
+        {
+            var clientsPage = new NavigationPage(new AddNewCustomer());
+            await Navigation.PushModalAsync(clientsPage);
         }
 
         private async Task SendRequest(int id, int port, bool serverState)

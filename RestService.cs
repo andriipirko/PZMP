@@ -100,5 +100,44 @@ namespace AdminAccountingApp
 
             return result;
         }
+
+        public async Task<bool> Authorize(string login, string password)
+        {
+            string url = $"http://192.168.1.20:5999/api/Authorization/Authorize/{login}/{password}";
+            bool result = false;
+
+            try
+            {
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri(url);
+                var response = await client.GetAsync(client.BaseAddress);
+                response.EnsureSuccessStatusCode();
+                result = JsonConvert.DeserializeObject<bool>(await response.Content.ReadAsStringAsync());
+            }
+            catch { return false; }
+
+
+            return result;
+        }
+
+        public async Task<bool> CreateNewCustomer(string name)
+        {
+            bool result = true;
+            string url = $"http://192.168.1.20:5999/api/Customers/CreateNew/{name}";
+
+            try
+            {
+                HttpClient client = new HttpClient();
+                HttpRequestMessage request = new HttpRequestMessage();
+                request.RequestUri = new Uri(url);
+                request.Method = HttpMethod.Post;
+                HttpResponseMessage response = await client.SendAsync(request);
+                response.EnsureSuccessStatusCode();
+
+            }
+            catch { return false; }
+
+            return result;
+        }
     }
 }

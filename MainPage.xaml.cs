@@ -36,7 +36,7 @@ namespace AdminAccountingApp
         private async void OnButtonClientsClicked(object sender, EventArgs e)
         {
             var clientsPage = new NavigationPage(new ClientsView());
-            await Navigation.PushAsync(clientsPage);
+            await Navigation.PushModalAsync(clientsPage);
         }
     }
 }

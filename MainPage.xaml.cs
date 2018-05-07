@@ -25,6 +25,12 @@ namespace AdminAccountingApp
                 Priority = 0
             };
 
+            tb.Clicked += async (sender, e) =>
+            {
+                var clientsPage = new NavigationPage(new ClientsView());
+                await Navigation.PushModalAsync(clientsPage);
+            };
+
             ToolbarItem tb1 = new ToolbarItem
             {
                 Text = "Пункт меню",

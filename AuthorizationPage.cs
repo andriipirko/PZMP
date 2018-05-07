@@ -14,6 +14,21 @@ namespace AdminAccountingApp
 
         private void AddComponents()
         {
+            ToolbarItem tb = new ToolbarItem
+            {
+                Text = "Реєстрація",
+                Order = ToolbarItemOrder.Secondary,
+                Priority = 0
+            };
+
+            tb.Clicked += async (sender, e) =>
+            {
+                var registrationPage = new NavigationPage(new RegistrationPage());
+                await Navigation.PushModalAsync(registrationPage);
+            };
+
+            ToolbarItems.Add(tb);
+
             SwitchCell saveConfig = new SwitchCell();
             saveConfig.Text = "Зберегти дані";
             saveConfig.On = true;
